@@ -52,7 +52,7 @@ import org.mybatis.generator.logging.Log;
 import org.mybatis.generator.logging.LogFactory;
 
 /**
- * 
+ * 数据库表以及列的信息读取，类型设置
  * @author Jeff Butler
  */
 public class DatabaseIntrospector {

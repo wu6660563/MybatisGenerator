@@ -45,7 +45,7 @@ import org.mybatis.generator.codegen.mybatis3.xmlmapper.elements.UpdateByPrimary
 import org.mybatis.generator.codegen.mybatis3.xmlmapper.elements.UpdateByPrimaryKeyWithoutBLOBsElementGenerator;
 
 /**
- * 
+ * Mybatis里面具有的方法
  * @author Jeff Butler
  * 
  */
@@ -77,7 +77,7 @@ public class XMLMapperGenerator extends AbstractXmlGenerator {
         addSelectByPrimaryKeyElement(answer);
         addDeleteByPrimaryKeyElement(answer);
         addDeleteByExampleElement(answer);
-        addInsertElement(answer);
+//        addInsertElement(answer);
         addInsertSelectiveElement(answer);
         addCountByExampleElement(answer);
         addUpdateByExampleSelectiveElement(answer);
@@ -85,7 +85,7 @@ public class XMLMapperGenerator extends AbstractXmlGenerator {
         addUpdateByExampleWithoutBLOBsElement(answer);
         addUpdateByPrimaryKeySelectiveElement(answer);
         addUpdateByPrimaryKeyWithBLOBsElement(answer);
-        addUpdateByPrimaryKeyWithoutBLOBsElement(answer);
+//        addUpdateByPrimaryKeyWithoutBLOBsElement(answer);
 
         return answer;
     }

@@ -14,3 +14,66 @@ org.mybatis.generator.api.IntrospectedTable
 
 calculateJavaClientAttributes方法(大概820行)
  sb.append("Mapper");注释掉改成 sb.append("Dao");
+ 
+3、修改Mybatis的Model生成JavaDoc注释内容：
+1)generatorConfig.xml配置里面设置成：<property name="suppressAllComments" value="false"/>
+代码修改详情：
+org.mybatis.generator.internal.DefaultCommentGenerator里面的添加注释代码去掉，改成
+
+------------------------------ code start ----------------------------------------
+field.addJavaDocLine("/**");
+field.addJavaDocLine(" * @Fields "+field.getName()+" "+introspectedColumn.getRemarks());
+field.addJavaDocLine(" */");
+
+------------------------------ code end ---------------------------------------------
+
+4、org.mybatis.generator.internal.DefaultCommentGenerator修改XXXDao.java(XXXMapper.java)的接口方法的Javadoc注释
+搜索org.mybatis.generator.internal.DefaultCommentGenerator如下方法，并注释方法里面内容，
+public void addGeneralMethodComment(Method method,
+            IntrospectedTable introspectedTable)
+
+改成：
+
+method.addJavaDocLine("/**");
+method.addJavaDocLine(" * @Title " + method.getName());
+for (Parameter parameter : method.getParameters()) {
+	 method.addJavaDocLine(" * @param " + parameter.getName());
+}
+String returnType = method.getReturnType().toString();
+returnType = returnType.lastIndexOf(".") != -1 ? returnType.substring(returnType.lastIndexOf(".") + 1) : returnType;
+method.addJavaDocLine(" * @return " + returnType);
+method.addJavaDocLine(" */");
+
+5、注释掉Model里面Getter和Setter方法的注释，根据需要自己加上配置
+搜索org.mybatis.generator.internal.DefaultCommentGenerator如下方法：
+public void addGetterComment(Method method,
+            IntrospectedTable introspectedTable,
+            IntrospectedColumn introspectedColumn)
+            
+public void addSetterComment(Method method,
+            IntrospectedTable introspectedTable,
+            IntrospectedColumn introspectedColumn)
+            
+6、注释掉Mapper.xml里面的<!-- 注释 -->,实际使用未用到
+搜索org.mybatis.generator.internal.DefaultCommentGenerator如下方法：
+public void addComment(XmlElement xmlElement) 
+
+7、XML里面每个SQL增加一个换行
+org.mybatis.generator.api.dom.xml.XmlElement里面getFormattedContent里面加上：
+if(indentLevel == 1) {
+	//每个insert/update/select之间插入一个空行
+	OutputUtilities.newLine(sb);
+}
+
+8、修改mybatis的mapper.xml文件里面insert和update不根据字段判断的非动态SQL
+org.mybatis.generator.codegen.mybatis3.xmlmapper.XMLMapperGenerator
+里面的getSqlMapElement方法
+
+注释掉：
+addInsertElement(answer);
+addUpdateByPrimaryKeyWithoutBLOBsElement(answer);
+
+对应的是mapper.xml里面的
+<insert id="insert" parameterType="com.geeku.model.exhibition.Likes" ></insert>
+<update id="updateByPrimaryKey" parameterType="com.geeku.model.exhibition.Likes" ></update>
+ 

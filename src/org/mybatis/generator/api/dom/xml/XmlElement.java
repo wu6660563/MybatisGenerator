@@ -91,6 +91,11 @@ public class XmlElement extends Element {
     @Override
     public String getFormattedContent(int indentLevel) {
         StringBuilder sb = new StringBuilder();
+        
+        if(indentLevel == 1) {
+        	//每个insert/update/select之间插入一个空行
+        	OutputUtilities.newLine(sb);
+        }
 
         OutputUtilities.xmlIndent(sb, indentLevel);
         sb.append('<');

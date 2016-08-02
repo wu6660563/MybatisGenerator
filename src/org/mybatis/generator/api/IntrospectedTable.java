@@ -892,6 +892,10 @@ public abstract class IntrospectedTable {
         return sb.toString();
     }
 
+    /**
+     * Mybatis中Mapper.xml的文件名
+     * @return
+     */
     protected String calculateMyBatis3XmlMapperFileName() {
         StringBuilder sb = new StringBuilder();
         sb.append(fullyQualifiedTable.getDomainObjectName());
@@ -903,6 +907,10 @@ public abstract class IntrospectedTable {
         return fullyQualifiedTable.getIbatis2SqlMapNamespace();
     }
     
+    /**
+     * mybatis SQL里面的命名空间
+     * @return
+     */
     protected String calculateMyBatis3FallbackSqlMapNamespace() {
         StringBuilder sb = new StringBuilder();
         sb.append(calculateSqlMapPackage());

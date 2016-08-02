@@ -51,6 +51,7 @@ public class ShellRunner {
     private static final String HELP_2 = "-h"; //$NON-NLS-1$
 
     public static void main(String[] str) {
+    	//此处写死参数
     	String[] args = {CONFIG_FILE, "generatorConfig.xml", OVERWRITE};
     	
         if (args.length == 0) {

@@ -1,27 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>  
 <!DOCTYPE generatorConfiguration  
   PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"  
-  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">  
+  "dtd/mybatis-generator-config_1_0.dtd">  
 <generatorConfiguration>  
     <classPathEntry  location="mysql-connector-java-5.1.25-bin.jar"/>  
-    <context id="DB2Tables"  targetRuntime="MyBatis3">  
+    <context id="DB2Tables"  targetRuntime="MyBatis3">
         <commentGenerator>  
             <property name="suppressDate" value="true"/>
-            <property name="suppressAllComments" value="true"/>
-        </commentGenerator>  
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://192.168.0.204:3306/geeku" userId="root" password="ysl123456">  
+            <property name="suppressAllComments" value="false"/>
+        </commentGenerator>
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/test" userId="root" password="root">  
         </jdbcConnection>  
         <javaTypeResolver>  
             <property name="forceBigDecimals" value="false"/>  
         </javaTypeResolver>  
-        <javaModelGenerator targetPackage="com.geeku.model.innovative" targetProject="src">  
+        <javaModelGenerator targetPackage="com.geeku.model.innovative" targetProject="target">  
             <property name="enableSubPackages" value="true"/>  
-            <property name="trimStrings" value="true"/>  
+            <property name="trimStrings" value="true"/>
+           	<property name="rootClass" value="com.geeku.model.BaseModel"/>   
         </javaModelGenerator>  
-        <sqlMapGenerator targetPackage="com.geeku.mapping.innovative" targetProject="src">  
+        <sqlMapGenerator targetPackage="com.geeku.mapping.innovative" targetProject="target">  
             <property name="enableSubPackages" value="true"/>  
         </sqlMapGenerator>  
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.geeku.dao.innovative" targetProject="src">  
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.geeku.dao.innovative" targetProject="target">  
             <property name="enableSubPackages" value="true"/>  
         </javaClientGenerator>
         
@@ -34,7 +35,9 @@
 		<table tableName="recruit_member" domainObjectName="RecruitMember" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
 		<table tableName="recruit" domainObjectName="Recruit" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
 		 -->
-		<table tableName="recruit_member" domainObjectName="RecruitMember" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+		<table tableName="recruit_member" domainObjectName="RecruitMember" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+			 <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+		</table>
 			
     </context>  
 </generatorConfiguration>  
