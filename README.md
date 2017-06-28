@@ -16,6 +16,9 @@ http://mbg.cndocs.tk/running/running.html
 
 ![IDEA下面图片](http://os9eopjop.bkt.clouddn.com/1.png)
 
+### 推荐同类工具
+https://github.com/astarring/mybatis-generator-gui
+
 ### 命令行
 从命令行运行MGB时您必须指定 XML 配置文件。如果文件的名字是"generatorConfig.xml",可以用下面任意的命令执行:
 ```
